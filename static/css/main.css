@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: #f5faff;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    padding: 2% 0;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.menu {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #3498db;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #2a87b0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+body.light-mode table th {
+    background-color: #d3d3d3;
+    color: black;
+}
+
+body.dark-mode table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button.light-mode {
+    background-color: #3498db;
+    color: white;
+}
+
+.button.dark-mode {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+}
+
+.button:hover {
+    filter: brightness(1.2);
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #3498db;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #3498db;
+    transition: color 0.3s;
+}
+
+.button-container a:hover {
+    color: #2a87b0;
+}
+
+.book-form {
+    width: 500px;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.book-form input[type="text"],
+.book-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.book-form input,
+.book-form input::-webkit-input-placeholder {
+    font-size: 15px;
+}
+
+.book-form button {
+    padding: 8px 18px;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.book-form button:hover {
+    background-color: #2a87b0;
+}
+
+.auth-form {
+    width: 200px;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.auth-form input,
+.auth-form input::-webkit-input-placeholder {
+    font-size: 15px;
+}
+
+.auth-form button {
+    padding: 8px 18px;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: #2a87b0;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}

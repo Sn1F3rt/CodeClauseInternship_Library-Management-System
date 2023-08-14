@@ -1,0 +1,48 @@
+{% set title = "Edit Book" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'head.html' %}
+
+
+<body class="light-mode">
+    <div class="header">
+        <h1>{{ title }}</h1>
+
+        {% include 'theme-toggle.html' %}
+
+    </div>
+
+    <div class="container">
+        <form method="POST" class="book-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title(value=book.title) }}
+            </div>
+            <div class="form-group">
+                {{ form.author(value=book.author) }}
+            </div>
+            <div class="form-group">
+                {{ form.year(value=book.year) }}
+            </div>
+            <button type="submit" class="button"><i class="fas fa-edit icon"></i> Edit Book</button>
+        </form>
+
+        <div class="button-container">
+            {% if current_user.librarian %}
+                <a href="{{ url_for('books.my_books') }}" class="button"><i class="fas fa-arrow-left icon"></i> Book Management</a>
+            {% else %}
+                <a href="{{ url_for('books.my_books') }}" class="button"><i class="fas fa-arrow-left icon"></i> My Books</a>
+            {% endif %}
+            <br>
+            <a href="{{ url_for('meta.home') }}" class="button"><i class="fas fa-house icon"></i> Home</a>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    {% include 'scripts.html' %}
+
+</body>
+</html>

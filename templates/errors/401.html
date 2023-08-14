@@ -1,0 +1,28 @@
+{% set title = "401 - Unauthorized" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'head.html' %}
+
+
+<body class="light-mode">
+    <div class="header">
+        <h1>{{ title }}</h1>
+
+        {% include 'theme-toggle.html' %}
+
+    <div class="container">
+        <p style="text-align: center;"><i class="fas fa-triangle-exclamation icon"></i> You don't have permission to access this page.</p>
+
+        <div class="button-container">
+            <a href="{{ url_for('meta.home') }}" class="button"><i class="fas fa-house icon"></i> Home</a>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    {% include 'scripts.html' %}
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% set title = "Dashboard" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'head.html' %}
+
+<body class="light-mode">
+    <div class="header">
+        {% if current_user.is_authenticated: %}
+            {% if current_user.librarian %}
+                <h1>Welcome, {{ current_user.username }} (librarian)!</h1>
+            {% else %}
+                <h1>Welcome, {{ current_user.username }}!</h1>
+            {% endif %}
+        {% else %}
+        <h1>Sn1F3rt x Library Management System</h1>
+        {% endif %}
+
+        {% include 'theme-toggle.html' %}
+
+    </div>
+
+    <div class="container">
+        <div class="menu">
+            {% if current_user.is_authenticated %}
+                {% if current_user.librarian %}
+                    <a href="{{ url_for('books.my_books') }}" class="button"><i class="fas fa-book icon"></i> Book Management</a>
+                {% else %}
+                    <a href="{{ url_for('books.my_books') }}" class="button"><i class="fas fa-book icon"></i> My Books</a>
+                {% endif %}
+                <a href="{{ url_for('books.add_book') }}" class="button"><i class="fas fa-plus icon"></i> Add Book</a>
+                <a href="{{ url_for('auth.logout') }}" class="button"><i class="fas fa-sign-out-alt icon"></i> Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}" class="button"><i class="fas fa-sign-in-alt icon"></i> Login</a>
+                <a href="{{ url_for('auth.register') }}" class="button"><i class="fas fa-user-plus icon"></i> Register</a>
+            {% endif %}
+        </div>
+
+        <h2>All Books</h2>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Owner</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.year }}</td>
+                    <td>{{ book.owner.username }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {% include 'footer.html' %}
+
+    {% include 'scripts.html' %}
+
+</body>
+</html>

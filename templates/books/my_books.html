@@ -1,0 +1,63 @@
+{% if current_user.librarian %}
+{% set title = "Book Management" %}
+{% else %}
+{% set title = "My Books" %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'head.html' %}
+
+
+<body class="light-mode">
+    <div class="header">
+        <h1>{{ title }}</h1>
+
+        {% include 'theme-toggle.html' %}
+
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                {% if current_user.librarian %}
+                <th>Owner</th>
+                {% endif %}
+                <th>Actions</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    {% if current_user.librarian %}
+                    <td>{{ book.owner.username }}</td>
+                    {% endif %}
+                    <td>{{ book.year }}</td>
+                    <td>
+                        <div class="button-container" style="margin-top: 0;">
+                            <a href="{{ url_for('books.edit_book', book_id=book.id) }}" class="button"><i class="fas fa-edit icon"></i> Edit</a>
+                            <a href="{{ url_for('books.delete_book', book_id=book.id) }}" class="button"><i class="fas fa-trash-alt icon"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="button-container">
+            <a href="{{ url_for('meta.home') }}" class="button"><i class="fas fa-house icon"></i> Home</a>
+        </div>
+
+    </div>
+
+    {% include 'footer.html' %}
+
+    {% include 'scripts.html' %}
+
+</body>
+</html>
