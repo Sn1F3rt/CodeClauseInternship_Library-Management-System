@@ -7,7 +7,7 @@ from flask_login import (
 )
 
 from forms import LoginForm, RegistrationForm
-from factory import db
+from factory import db, policy
 from models import User
 
 from blueprints.auth import auth_bp
@@ -30,6 +30,18 @@ def register():
         if user:
             flash(
                 "That username is already taken! Please choose another one.", "warning"
+            )
+            return redirect(url_for("auth.register"))
+
+        if not len(username) in range(5, 11):
+            flash("Username must be between 5 and 10 characters.", "warning")
+            return redirect(url_for("auth.register"))
+
+        if not policy.validate(password):
+            flash(
+                "Password must be between 8 and 32 characters, and must contain at least one uppercase, "
+                "one lowercase, one digit and a special character.",
+                "warning",
             )
             return redirect(url_for("auth.register"))
 

@@ -2,6 +2,7 @@ import os
 import click
 
 from dotenv import load_dotenv
+from password_validation import PasswordPolicy
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -11,6 +12,10 @@ from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
+
+policy = PasswordPolicy(
+    min_length=8, max_length=32, uppercase=1, lowercase=1, numbers=1, symbols=1
+)
 
 
 def setup_db(app: Flask):
@@ -46,6 +51,7 @@ def create_app():
     bcrypt = Bcrypt(app)
 
     login_manager = LoginManager(app)
+    login_manager.login_message_category = "warning"
 
     with app.app_context():
         setup_db(app)
