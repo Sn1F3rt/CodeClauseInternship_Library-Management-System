@@ -58,11 +58,11 @@ flask run
 
 ## CLI Commands
 
-- `flask add_librarian username`\
-  CLI command to give admin privileges to a user. Note that `username` has to be a valid existing user.
+- `flask add_librarian --username=user`\
+  CLI command to give admin privileges to a user. Note that `user` has to be a valid existing user.
   
-- `flask rm_librarian username`\
-  CLI command to revoke admin privileges from a user. Note that `username` has to be a valid existing user.
+- `flask rm_librarian --username=user`\
+  CLI command to revoke admin privileges from a user. Note that `user` has to be a valid existing user.
   
 
 ## License

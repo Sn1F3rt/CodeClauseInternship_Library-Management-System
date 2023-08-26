@@ -65,8 +65,14 @@ def create_app():
 
             return User.query.get(int(user_id))
 
-        @app.cli.command("add_librarian")
-        @click.argument("username")
+        @app.cli.command(
+            "add_librarian", help="Command to give admin privileges to a user."
+        )
+        @click.option(
+            "--username",
+            prompt="Username",
+            help="Username of the user to be made a librarian (admin).",
+        )
         def add_librarian(username):
             from models import User
 
@@ -79,15 +85,21 @@ def create_app():
             db.session.commit()
             print(f"@{username} has been added as a librarian.")
 
-        @app.cli.command("rm_librarian")
-        @click.argument("username")
+        @app.cli.command(
+            "rm_librarian", help="Command to revoke admin privileges from a user."
+        )
+        @click.option(
+            "--username",
+            prompt="Username",
+            help="Username of the user to be removed from a librarian (admin).",
+        )
         def rm_librarian(username):
             from models import User
 
             user = User.query.filter_by(username=username).first()
 
             if not user.librarian:
-                print(f"@{username} is not a librarian.")
+                return print(f"@{username} is not a librarian.")
 
             user.librarian = False
             db.session.commit()
